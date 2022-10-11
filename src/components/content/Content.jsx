@@ -59,7 +59,7 @@ const Content = () => {
           <Inputs items={items} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate} handleOnChangeItem={handleOnChangeItem} handleDelete={handleDelete} />
         </tbody>
       </table>
-      <button onClick={() => handleAdd()}>Add list</button>
+      <button onClick={() => handleAdd()}>Add List</button>
     </>
   );
 };
