@@ -39,29 +39,28 @@ const Content = () => {
   const handleDelete = (id) => {
     const delItem = items.filter((item) => item.id !== id);
     setItems(delItem);
-    console.log(delItem);
   };
   // ---- End Function to handle delete some  item ---- //
 
   return (
-    <div>
-      <table>
-        <thead className="bg-red-200">
+    <>
+      <table className="w-full">
+        <thead className="bg-red-200 text-center">
           <tr>
             <th>Item</th>
             <th>Quantity</th>
             <th>Rate</th>
             <th>Amount</th>
-            <th>Setting</th>
+            <th></th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="text-center">
           <Inputs items={items} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate} handleOnChangeItem={handleOnChangeItem} handleDelete={handleDelete} />
         </tbody>
       </table>
-      <button onClick={handleAdd}>add</button>
-    </div>
+      <button onClick={() => handleAdd()}>add</button>
+    </>
   );
 };
 

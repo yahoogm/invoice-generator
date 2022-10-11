@@ -28,6 +28,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
         <tr key={item.id}>
           <td>
             <input
+              className="text-center w-full"
               type="text"
               placeholder="Description of service or product..."
               value={item.title}
@@ -41,6 +42,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <input
+              className="text-center"
               placeholder="Quantity"
               type="number"
               value={item.qty}
@@ -54,6 +56,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <input
+              className="text-center"
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];
@@ -65,12 +68,16 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
             />
           </td>
           <td>
-            <input value={item.qty * item.rate} />
+            <span>{item.qty * item.rate}</span>
           </td>
           <td>
-            <button className="bg-red-300 rounded" onClick={() => handleDelete(item.id)}>
-              Delete
-            </button>
+            {items.length === 1 ? (
+              ''
+            ) : (
+              <button className="bg-red-300 rounded" onClick={() => handleDelete(item.id)}>
+                Delete
+              </button>
+            )}
           </td>
         </tr>
       ))}

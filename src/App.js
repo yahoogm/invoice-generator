@@ -3,7 +3,7 @@ import Content from './components/content/Content';
 
 function App() {
   return (
-    <div className="flex justify-center mt-20">
+    <div className="mt-20 w-full p-5">
       <Content />
     </div>
   );
