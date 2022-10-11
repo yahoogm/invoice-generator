@@ -1,10 +1,10 @@
 import './App.css';
-import Main from './components/main/Main';
+import Content from './components/content/Content';
 
 function App() {
   return (
     <div className="flex justify-center mt-20">
-      <Main />
+      <Content />
     </div>
   );
 }
