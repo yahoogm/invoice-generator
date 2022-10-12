@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FcFullTrash } from 'react-icons/fc';
 
 // ------ {items, handleOnChangeQty .... is a props from Content.jsx (parent)} ------- //
 const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete }) => {
@@ -28,7 +29,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
         <tr key={item.id}>
           <td>
             <input
-              className="text-center w-full"
+              className=" w-full border rounded-sm p-1"
               type="text"
               placeholder="Description of service or product..."
               value={item.title}
@@ -42,7 +43,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <input
-              className="text-center"
+              className="text-center border rounded-sm p-1 w-full"
               placeholder="Quantity"
               type="number"
               value={item.qty}
@@ -55,8 +56,9 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
             />
           </td>
           <td>
+            <span className="absolute mt-1 ml-2 ">Rp</span>
             <input
-              className="text-center"
+              className="pl-10 border rounded-sm p-1 w-full"
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];
@@ -68,16 +70,10 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
             />
           </td>
           <td>
-            <span>{item.qty * item.rate}</span>
-          </td>
-          <td>
-            {items.length === 1 ? (
-              ''
-            ) : (
-              <button className="bg-red-300 rounded" onClick={() => handleDelete(item.id)}>
-                Delete
-              </button>
-            )}
+            <div className="flex justify-between items-center">
+              <span>Rp {item.qty * item.rate}</span>
+              {items.length === 1 ? '' : <FcFullTrash className="cursor-pointer" onClick={() => handleDelete(item.id)} />}
+            </div>
           </td>
         </tr>
       ))}
