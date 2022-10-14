@@ -1,7 +1,8 @@
+
 import Inputs from './Inputs';
 import { HiPlus } from 'react-icons/hi';
 
-const Content = ({ items, handleAdd, handleDelete, handleOnChangeItem, handleOnChangeQty, handleOnChangeRate }) => {
+const Content = ({ items, handleAdd, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete }) => {
   return (
     <>
       <table className="w-full table-fixed">
@@ -14,6 +15,7 @@ const Content = ({ items, handleAdd, handleDelete, handleOnChangeItem, handleOnC
           </tr>
         </thead>
 
+
         <tbody>
           <Inputs items={items} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate} handleOnChangeItem={handleOnChangeItem} handleDelete={handleDelete} />
         </tbody>
@@ -22,8 +24,9 @@ const Content = ({ items, handleAdd, handleDelete, handleOnChangeItem, handleOnC
         <HiPlus className="mr-1 text-white" />
         Line Item
       </button>
-    </>
-  );
-};
 
-export default Content;
+    </>
+  )
+}
+
+export default Content
