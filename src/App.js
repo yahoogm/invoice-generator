@@ -1,26 +1,35 @@
-import './App.css';
-import {React} from 'react'
-import Header from './components/header/header';
-import Bisa from './components/header/Bisa';
-import Susah from './components/header/Susah';
-import Time from './components/header/Time';
-import { InvoiceProvider } from './hooks/context';
 
 
-function App() {
-  return <InvoiceProvider>
-  <div className='container'>
-    <div className='flex flex-row'>
-      <div className='flex flex-col w-full'>
-        <Header />
-        <Bisa />
-        <Susah />
-      </div>
-      <Time />
-    </div>
-    </div>
+  // ---- Start Function to handle changes some  item ---- //
+  const handleOnChangeItem = (index, item) => {
+    const newItem = [...items]
+    newItem[index].item = item
+    setItems(newItem)
+  }
+  // ---- End Function to handle hanges some item ---- //
+
+  // ---- Start Function to handle delete some  item ---- //
+  const handleDelete = (id) => {
+    const delItem = items.filter((item) => item.id !== id)
+    setItems(delItem)
+  }
+  // ---- End Function to handle delete some  item ---- //
+
+  let subtotal = 0
+  items.forEach((item) => {
+    subtotal += Number(item.qty) * Number(item.rate)
+  }, 0)
+
+  return (
+    <>
     
-  </InvoiceProvider>;
-}
+      <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+      <br />
+      <br />
+      <br />
 
-export default App;
+      <Footer subtotal={subtotal} />
+    </>
+  )
+}
+export default App
