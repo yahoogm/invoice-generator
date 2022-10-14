@@ -1,6 +1,6 @@
 import './App.css';
 import {React} from 'react'
-import Header from './components/header/Header';
+import Header from './components/header/header';
 import Bisa from './components/header/Bisa';
 import Susah from './components/header/Susah';
 import Time from './components/header/Time';
