@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FcFullTrash } from 'react-icons/fc';
+import { HiOutlineX } from 'react-icons/hi';
 
 // ------ {items, handleOnChangeQty .... is a props from Content.jsx (parent)} ------- //
 const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete }) => {
@@ -23,13 +23,17 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
   }, [items]);
   // --------- End Effect to render something new changes of items --------- //
 
+  // ---- Start Function to format the amount to IDR ---- //
+  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: 'currency', currency }).format(number);
+  // ---- End Function to format the amount to IDR ---- //
+
   return (
     <>
       {items.map((item, index) => (
         <tr key={item.id}>
           <td>
             <input
-              className=" w-full border rounded-sm p-1"
+              className="text-gray-600 w-full duration-300 border rounded-sm p-1 hover:border-gray-400  focus:outline-[#009e74] px-3 placeholder:text-gray-500"
               type="text"
               placeholder="Description of service or product..."
               value={item.title}
@@ -43,8 +47,9 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <input
-              className="text-center border rounded-sm p-1 w-full"
+              className="text-gray-600 px-4 border rounded-sm p-1 w-full duration-300 hover:border-gray-400  focus:outline-[#009e74] invalid:outline-red-400"
               placeholder="Quantity"
+              min="1"
               type="number"
               value={item.qty}
               onChange={(e) => {
@@ -56,9 +61,9 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
             />
           </td>
           <td>
-            <span className="absolute mt-1 ml-2 ">Rp</span>
+            <span className="absolute mt-2 ml-4 font-mono text-sm text-gray-600">Rp</span>
             <input
-              className="pl-10 border rounded-sm p-1 w-full"
+              className="text-gray-600 pl-12 border duration-300 rounded-sm p-1 w-full hover:border-gray-400  focus:outline-[#009e74]"
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];
@@ -71,8 +76,8 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <div className="flex justify-between items-center">
-              <span>Rp {item.qty * item.rate}</span>
-              {items.length === 1 ? '' : <FcFullTrash className="cursor-pointer" onClick={() => handleDelete(item.id)} />}
+              <span className="text-gray-600 text-sm">{toCurrency(item.qty * item.rate, 'IDR')}</span>
+              {items.length === 1 ? '' : <HiOutlineX className="cursor-pointer hover:text-red-500 duration-300 " onClick={() => handleDelete(item.id)} />}
             </div>
           </td>
         </tr>
