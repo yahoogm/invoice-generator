@@ -13,7 +13,7 @@ const Sidebar = ({ title, place }) => {
         </label>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
