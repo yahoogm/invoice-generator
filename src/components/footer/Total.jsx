@@ -32,7 +32,9 @@ const Total = ({ inputtext, inputplace, value, onChange, style, button }) => {
           </>
         )}
         <div className=" py-2">
-          <button onClick={() => Hide(!show)}>{show === true ? <IoMdClose /> : <HiPlus />}</button>
+          <button className="text-white hover:text-black" onClick={() => Hide(!show)}>
+            {show === true ? <IoMdClose /> : <HiPlus />}
+          </button>
         </div>
       </div>
     </>
