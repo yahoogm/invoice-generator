@@ -15,6 +15,7 @@ const App = () => {
     const id = items.length ? items[items.length - 1].id + 1 : 1
     setItems([...items, { id: id, item: "", qty: 1, rate: 0 }])
   }
+
   // ---- End Function to handle some new items ---- //
 
   // ---- Start Function to handle changes some  item ---- //
@@ -54,21 +55,20 @@ const App = () => {
   }, 0)
 
   return (
-    <InvoiceProvider>
-      <Header />
-      <Bisa />
-      <Susah />
-      <Time />
-
-      <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
-      <br />
-      <br />
-      <Footer subtotal={subtotal} />
-      <br />
-      <br />
-      <br />
-      <br />
-    </InvoiceProvider>
+    <div className="p-5">
+      <InvoiceProvider>
+        <div className="mb-10">
+          <Header />
+          <Bisa />
+          <Susah />
+          <Time />
+        </div>
+        <div className="mb-10">
+          <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+        </div>
+        <Footer subtotal={subtotal} />
+      </InvoiceProvider>
+    </div>
   )
 }
 export default App
