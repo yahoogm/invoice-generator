@@ -55,7 +55,7 @@ const App = () => {
   }, 0)
 
   return (
-    <div className="container">
+    <div className="mt-5 ml-28 mb-5 mr-72 p-4 bg-white mx-52 shadow-2xl border-t border-l border-b-2 border-r-2 border-gray-400 space-y-5">
       <InvoiceProvider>
         <div className="flex flex-row justify-between">
           <div>
@@ -66,8 +66,12 @@ const App = () => {
           <Time />
         </div>
 
-        <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
-        <Footer subtotal={subtotal} />
+        <div>
+          <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+        </div>
+        <div>
+          <Footer subtotal={subtotal} />
+        </div>
       </InvoiceProvider>
     </div>
   )
