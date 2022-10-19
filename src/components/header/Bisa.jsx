@@ -16,7 +16,7 @@ const Bisa = () => {
           minRows: 3,
           maxRows: 5,
         }}
-        style={{marginTop:"30px", border:"1px solid gray", width:"300px"}}
+        style={{marginTop:"30px", border:"1px solid gray", width:"300px",outline: "none"}}
       />
       </>
   )
