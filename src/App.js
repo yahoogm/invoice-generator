@@ -1,11 +1,11 @@
-import Content from '../src/components/content/Content';
-import Footer from '../src/components/footer/Footer';
-import Header from '../src/components/header/header';
-import Bisa from '../src/components/header/Bisa';
-import Susah from '../src/components/header/Susah';
-import Time from '../src/components/header/Time';
-import { useState } from 'react';
-import { InvoiceProvider } from './hooks/context';
+import Content from "../src/components/content/Content";
+import Footer from "../src/components/footer/Footer";
+import Header from "../src/components/header/header";
+import Bisa from "../src/components/header/Bisa";
+import Susah from "../src/components/header/Susah";
+import Time from "../src/components/header/Time";
+import { useState } from "react";
+import { InvoiceProvider } from "./hooks/context";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -13,7 +13,7 @@ const App = () => {
   // ---- Start Function to handle some new items ---- //
   const handleAdd = () => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
-    setItems([...items, { id: id, item: '', qty: 1, rate: 0 }]);
+    setItems([...items, { id: id, item: "", qty: 1, rate: 0 }]);
   };
   // ---- End Function to handle some new items ---- //
 
@@ -54,15 +54,20 @@ const App = () => {
   }, 0);
 
   return (
-    <InvoiceProvider>
-      <Header />
-      <Bisa />
-      <Susah />
-      <Time />
-
-      <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
-      <Footer subtotal={subtotal} />
-    </InvoiceProvider>
+    <div className="p-5">
+      <InvoiceProvider>
+        <div className="mb-10">
+          <Header />
+          <Bisa />
+          <Susah />
+          <Time />
+        </div>
+        <div className="mb-10">
+          <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+        </div>
+        <Footer subtotal={subtotal} />
+      </InvoiceProvider>
+    </div>
   );
 };
 export default App;
