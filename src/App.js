@@ -55,20 +55,20 @@ const App = () => {
   }, 0)
 
   return (
-    <div className="p-5">
-      <InvoiceProvider>
-        <div className="mb-10">
-          <Header />
-          <Bisa />
-          <Susah />
-          <Time />
+
+    <InvoiceProvider>
+      <div className='flex flex-row justify-between'>
+        <div>
+        <Header />
+        <Bisa />
+        <Susah />
         </div>
-        <div className="mb-10">
-          <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
-        </div>
-        <Footer subtotal={subtotal} />
-      </InvoiceProvider>
-    </div>
-  )
-}
-export default App
+      <Time />
+      </div>
+
+      <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+      <Footer subtotal={subtotal} />
+    </InvoiceProvider>
+  );
+};
+export default App;

@@ -1,5 +1,5 @@
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { message, Upload } from 'antd';
+import {  PlusOutlined } from '@ant-design/icons';
+import {  Upload } from 'antd';
 import React, { useState } from 'react';
 
 
@@ -9,7 +9,7 @@ const Header = () => {
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
 
   const uploadButton = (
-    <div style={{border:"1px solid black", width:"250px", height:"150px", marginLeft:"15px", background:"silver"}}>
+    <div style={{border:"1px solid black", width:"250px", height:"150px", background:"silver"}}>
       <PlusOutlined style={{marginTop:"60px", marginLeft:"25px"}}/>
       <div
         style={{
