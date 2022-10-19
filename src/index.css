@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  background-color: black;
+}
+.container {
+  background-color: blueviolet;
+  width: 80%;
+}

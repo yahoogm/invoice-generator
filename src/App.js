@@ -55,20 +55,21 @@ const App = () => {
   }, 0)
 
   return (
-
-    <InvoiceProvider>
-      <div className='flex flex-row justify-between'>
-        <div>
-        <Header />
-        <Bisa />
-        <Susah />
+    <div className="container">
+      <InvoiceProvider>
+        <div className="flex flex-row justify-between">
+          <div>
+            <Header />
+            <Bisa />
+            <Susah />
+          </div>
+          <Time />
         </div>
-      <Time />
-      </div>
 
-      <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
-      <Footer subtotal={subtotal} />
-    </InvoiceProvider>
-  );
-};
-export default App;
+        <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+        <Footer subtotal={subtotal} />
+      </InvoiceProvider>
+    </div>
+  )
+}
+export default App
