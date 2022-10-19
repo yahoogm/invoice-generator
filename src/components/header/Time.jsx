@@ -4,8 +4,8 @@ const Time = () => {
   return (
     <div className="flex flex-col items-end justify-between mr-5 mt-4">
       <div className="flex flex-col gap-4 mb-20">
-        <input dir="rtl" type="text" defaultValue="invoice" className="w-[70%] outline-none text-4xl h-20"></input>
-        <input type="text" className="border border-gray w-[60%] ml-12 outline-none"  />
+        <input dir="rtl" type="text" defaultValue="invoice" className="w-[70%] outline-none text-4xl h-20 ml-[80px]"></input>
+        <input type="text" className="border border-gray w-[60%] ml-[140px] outline-none"  />
       </div>
 
       <div className="flex flex-col">
