@@ -1,31 +1,30 @@
-
-import React, { useEffect, useState } from 'react';
-import { HiOutlineX } from 'react-icons/hi';
+import React, { useEffect, useState } from "react";
+import { HiOutlineX } from "react-icons/hi";
 
 // ------ {items, handleOnChangeQty .... is a props from Content.jsx (parent)} ------- //
 const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete }) => {
   // --------- Start State to change something in items --------- //
-  const [qty, setQty] = useState([1])
-  const [rate, setRate] = useState([1])
-  const [title, setTitle] = useState("")
+  const [qty, setQty] = useState([1]);
+  const [rate, setRate] = useState([1]);
+  const [title, setTitle] = useState("");
   // --------- End State to change something in items --------- //
 
   // --------- Start Effect to render something new changes of items --------- //
   useEffect(() => {
-    items.map((item, index) => setQty([...title, item.title]))
-  }, [items])
+    items.map((item, index) => setQty([...title, item.title]));
+  }, [items]);
 
   useEffect(() => {
-    items.map((item, index) => setQty([...qty, item.qty]))
-  }, [items])
+    items.map((item, index) => setQty([...qty, item.qty]));
+  }, [items]);
 
   useEffect(() => {
-    items.map((item, index) => setRate([...rate, item.rate]))
-  }, [items])
+    items.map((item, index) => setRate([...rate, item.rate]));
+  }, [items]);
   // --------- End Effect to render something new changes of items --------- //
 
   // ---- Start Function to format the amount to IDR ---- //
-  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: 'currency', currency }).format(number);
+  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
   // ---- End Function to format the amount to IDR ---- //
 
   return (
@@ -39,10 +38,10 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
               placeholder="Description of service or product..."
               value={item.title}
               onChange={(e) => {
-                let titles = [...title]
-                titles[index] = e.target.value
-                setTitle(titles)
-                handleOnChangeItem(index, e.target.value)
+                let titles = [...title];
+                titles[index] = e.target.value;
+                setTitle(titles);
+                handleOnChangeItem(index, e.target.value);
               }}
             />
           </td>
@@ -54,10 +53,10 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
               type="number"
               value={item.qty}
               onChange={(e) => {
-                let quantity = [...qty]
-                quantity[index] = e.target.value
-                setQty(quantity)
-                handleOnChangeQty(index, e.target.value)
+                let quantity = [...qty];
+                quantity[index] = e.target.value;
+                setQty(quantity);
+                handleOnChangeQty(index, e.target.value);
               }}
             />
           </td>
@@ -67,26 +66,24 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
               className="text-gray-600 pl-12 border duration-300 rounded-sm p-1 w-full hover:border-gray-400  focus:outline-[#009e74]"
               value={item.rate}
               onChange={(e) => {
-                let rates = [...rate]
-                rates[index] = e.target.value
-                setRate(rates)
-                handleOnChangeRate(index, e.target.value)
+                let rates = [...rate];
+                rates[index] = e.target.value;
+                setRate(rates);
+                handleOnChangeRate(index, e.target.value);
               }}
               type="number"
             />
           </td>
           <td>
-
             <div className="flex justify-between items-center">
-              <span className="text-gray-600 text-sm">{toCurrency(item.qty * item.rate, 'IDR')}</span>
-              {items.length === 1 ? '' : <HiOutlineX className="cursor-pointer hover:text-red-500 duration-300 " onClick={() => handleDelete(item.id)} />}
+              <span className="text-gray-600 text-sm">{toCurrency(item.qty * item.rate, "IDR")}</span>
+              {items.length === 1 ? "" : <HiOutlineX className="cursor-pointer hover:text-red-500 duration-300 text-white" onClick={() => handleDelete(item.id)} />}
             </div>
-
           </td>
         </tr>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default Inputs
+export default Inputs;
