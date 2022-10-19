@@ -12,16 +12,16 @@ const Footer = ({ subtotal }) => {
 
   return (
     <>
-      <div className="flex justify-between">
-        <div>
+      <div className="flex justify-between ">
+        <div className="mt-2 mb-2">
           <Sidebar title={"Notes"} place={"Notes - any relevant information not already covered"} />
           <br />
           <br />
-
           <Sidebar title={"Terms"} place={"Term and Conditions - late fees,payment methods,delivery schedule"} />
           {/*  */}
         </div>
-        <div>
+
+        <div className="mt-2 mb-2">
           <Total inputtext={"Subtotal"} value={subtotal} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
           <Total inputtext={"Discount"} onChange={(e) => setDiscount(e.target.value)} value={discount} />
           <Total inputtext={"Tax"} onChange={(e) => setTax(e.target.value)} value={tax} />
