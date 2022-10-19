@@ -9,7 +9,7 @@ const Header = () => {
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
 
   const uploadButton = (
-    <div style={{border:"1px solid black", width:"250px", height:"150px", background:"silver"}}>
+    <div style={{border:"1px solid gray", width:"250px", height:"150px", background:"silver"}}>
       <PlusOutlined style={{marginTop:"60px", marginLeft:"25px"}}/>
       <div
         style={{
