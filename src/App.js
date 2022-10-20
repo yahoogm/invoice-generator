@@ -6,10 +6,18 @@ import Susah from "../src/components/header/Susah";
 import Time from "../src/components/header/Time";
 import React, { useRef, useState } from "react";
 import { InvoiceProvider } from "./hooks/context";
-import ReactToPrint, { useReactToPrint } from "react-to-print";
+import ReactToPrint from "react-to-print";
 
 const App = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      item: "",
+      qty: 1,
+      rate: 0,
+    },
+  ]);
+  const [btn, setBtn] = useState(true);
 
   // ---- Start Function to handle some new items ---- //
   const handleAdd = () => {
@@ -60,14 +68,11 @@ const App = () => {
   // ---- End Function to format the amount to IDR ---- //
 
   const componentRef = useRef();
-  // const handlePrint = useReactToPrint({
-  //   content: () => componentRef.current,
-  // })
 
   return (
-    <div className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative">
-      <ReactToPrint trigger={() => <button className="bg-[#009e90] p-4 right-0 absolute rounded-bl-3xl  hover:bg-[#009e74] border-[#10806f] border text-white">Print</button>} content={() => componentRef.current} />
-      <div className=" space-y-5 p-4" ref={componentRef}>
+    <div className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative space-y-5">
+      <ReactToPrint trigger={() => <button className="bg-[#009e90] p-4 right-0 absolute rounded-bl-3xl  hover:bg-[#009e74] border-[#10806f] border text-white shadow-md">Print</button>} content={() => componentRef.current} />
+      <div className=" space-y-5 p-4">
         <InvoiceProvider>
           <div className="flex flex-row justify-between">
             <div>
@@ -86,6 +91,35 @@ const App = () => {
           </div>
         </InvoiceProvider>
       </div>
+      <button className="bg-[#009e90] p-4 w-full  hover:bg-[#009e74] border-[#10806f] border text-white shadow-lg" onClick={() => setBtn(!btn)}>
+        Show Invoice
+      </button>
+      {btn && (
+        <div ref={componentRef} className="p-2">
+          <table className="w-full table-fixed">
+            <thead className="bg-gray-800 text-white text-left">
+              <tr>
+                <th className="p-1 w-[35%]">Item</th>
+                <th className="p-1 w-[15%]">Quantity</th>
+                <th className="p-1 w-[25%]">Rate</th>
+                <th className="p-1 w-[25%]">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((i) => {
+                return (
+                  <tr key={i.id}>
+                    <td className="font-semibold">{i.item}</td>
+                    <td>{i.qty}</td>
+                    <td>{toCurrency(i.rate, "IDR")}</td>
+                    <td>{toCurrency(i.qty * i.rate, "IDR")}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

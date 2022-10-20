@@ -22,11 +22,6 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
     items.map((item, index) => setRate([...rate, item.rate]));
   }, [items]);
   // --------- End Effect to render something new changes of items --------- //
-
-  // // ---- Start Function to format the amount to IDR ---- //
-  // const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
-  // // ---- End Function to format the amount to IDR ---- //
-
   return (
     <>
       {items.map((item, index) => (

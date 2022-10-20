@@ -16,7 +16,7 @@ const Time = () => {
             className="border border-gray w-[40%] outline-none px-2 py-1 rounded-md hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none"
             type="text"
             onFocus={(e) => (e.target.type = "date")}
-            onblur={(e) => (e.target.type = "text")}
+            onBlur={(e) => (e.target.type = "text")}
             id="date"
           />
         </div>
@@ -33,7 +33,7 @@ const Time = () => {
             className="border border-gray w-[40%] mt-2 outline-none px-2 py-1 rounded-md hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none"
             type="text"
             onFocus={(e) => (e.target.type = "date")}
-            onblur={(e) => (e.target.type = "text")}
+            onBlur={(e) => (e.target.type = "text")}
             id="date"
           />
           <br />
