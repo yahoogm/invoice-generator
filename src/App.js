@@ -4,8 +4,9 @@ import Header from "../src/components/header/header";
 import Bisa from "../src/components/header/Bisa";
 import Susah from "../src/components/header/Susah";
 import Time from "../src/components/header/Time";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import { InvoiceProvider } from "./hooks/context";
+import ReactToPrint, { useReactToPrint } from "react-to-print";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -58,9 +59,15 @@ const App = () => {
   const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
   // ---- End Function to format the amount to IDR ---- //
 
+  const componentRef = useRef();
+  // const handlePrint = useReactToPrint({
+  //   content: () => componentRef.current,
+  // })
+
   return (
-    <div className="w-[900px] m-auto p-2 border-l border-t border-b border-r-2 shadow-lg">
-      <div className="w-[100%] space-y-5">
+    <div className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative">
+      <ReactToPrint trigger={() => <button className="bg-[#009e90] p-4 right-0 absolute rounded-bl-3xl  hover:bg-[#009e74] border-[#10806f] border text-white">Print</button>} content={() => componentRef.current} />
+      <div className=" space-y-5 p-4" ref={componentRef}>
         <InvoiceProvider>
           <div className="flex flex-row justify-between">
             <div>

@@ -4,7 +4,7 @@ const Leaderbar = ({ judul, title }) => {
   const [kosong, setKosong] = useState(false);
   return (
     <>
-      <div style={{ width: 220 }}>
+      <div className="w-full">
         <label>
           <span className=" block text-sm font-medium text-slate-400">{judul}</span>
           <textarea
