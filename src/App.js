@@ -54,6 +54,10 @@ const App = () => {
     subtotal += Number(item.qty) * Number(item.rate);
   }, 0);
 
+  // ---- Start Function to format the amount to IDR ---- //
+  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
+  // ---- End Function to format the amount to IDR ---- //
+
   return (
     <div className="w-[900px] m-auto p-2 border-l border-t border-b border-r-2 shadow-lg">
       <div className="w-[100%] space-y-5">
@@ -68,7 +72,7 @@ const App = () => {
           </div>
 
           <div>
-            <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} />
+            <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} toCurrency={toCurrency} />
           </div>
           <div>
             <Footer subtotal={subtotal} />

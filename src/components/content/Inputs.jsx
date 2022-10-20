@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { HiOutlineX } from "react-icons/hi";
 
 // ------ {items, handleOnChangeQty .... is a props from Content.jsx (parent)} ------- //
-const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete }) => {
+const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete, toCurrency }) => {
   // --------- Start State to change something in items --------- //
   const [qty, setQty] = useState([1]);
   const [rate, setRate] = useState([1]);
@@ -23,9 +23,9 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
   }, [items]);
   // --------- End Effect to render something new changes of items --------- //
 
-  // ---- Start Function to format the amount to IDR ---- //
-  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
-  // ---- End Function to format the amount to IDR ---- //
+  // // ---- Start Function to format the amount to IDR ---- //
+  // const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
+  // // ---- End Function to format the amount to IDR ---- //
 
   return (
     <>
