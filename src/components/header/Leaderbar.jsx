@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const Leaderbar = ({ judul, title }) => {
   const [kosong, setKosong] = useState(false);
@@ -11,8 +11,8 @@ const Leaderbar = ({ judul, title }) => {
             type="text"
             className={
               kosong
-                ? 'h-16 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-red-400 focus:ring-red-300 block w-full rounded-md sm:text-sm focus:ring-0'
-                : 'h-16 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-green-400 focus:ring-green-300 block w-full rounded-md sm:text-sm focus:ring-0'
+                ? "h-16 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-red-400 focus:ring-red-300 block w-full rounded-md sm:text-sm focus:ring-0 hover:border-gray-400 text-gray-600"
+                : "h-16 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-green-400 focus:ring-green-300 block w-full rounded-md sm:text-sm focus:ring-0 hover:border-gray-400 text-gray-600"
             }
             placeholder={title}
             onChange={(e) => {
