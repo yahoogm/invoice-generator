@@ -1,16 +1,15 @@
 import Leaderbar from "./Leaderbar";
 
-const Susah =() => {
-    return (
-        <>
-        <div className="grid grid-cols-2 gap-2 w-full " >
-        <Leaderbar judul={"bill to"} title={"Who is ths invoice to?"}/>
-        
-        <Leaderbar  judul={"ship to"} title={"(optional)"}/>
-        </div>
-        </>
 
-    )
-}
+const Susah = () => {
+  return (
+    <div className="grid grid-cols-2 gap-4">
+      <Leaderbar judul={"Bill To"} title={"Who is ths invoice to?"} />
 
-export default Susah
+
+      <Leaderbar judul={"Ship To"} title={"(Optional)"} />
+    </div>
+  );
+};
+
+export default Susah;
