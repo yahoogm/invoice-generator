@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { HiOutlineX } from 'react-icons/hi';
+import React, { useEffect, useState } from "react";
+import { HiOutlineX } from "react-icons/hi";
 
 // ------ {items, handleOnChangeQty .... is a props from Content.jsx (parent)} ------- //
-const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete }) => {
+const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete, toCurrency }) => {
   // --------- Start State to change something in items --------- //
   const [qty, setQty] = useState([1]);
   const [rate, setRate] = useState([1]);
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   // --------- End State to change something in items --------- //
 
   // --------- Start Effect to render something new changes of items --------- //
@@ -22,18 +22,13 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
     items.map((item, index) => setRate([...rate, item.rate]));
   }, [items]);
   // --------- End Effect to render something new changes of items --------- //
-
-  // ---- Start Function to format the amount to IDR ---- //
-  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: 'currency', currency }).format(number);
-  // ---- End Function to format the amount to IDR ---- //
-
   return (
     <>
       {items.map((item, index) => (
         <tr key={item.id}>
           <td>
             <input
-              className="text-gray-600 w-full duration-300 border rounded-sm p-1 hover:border-gray-400  focus:outline-[#009e74] px-3 placeholder:text-gray-500"
+              className="text-gray-600 w-full  border rounded-md p-1 hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none  px-3 placeholder:text-gray-400"
               type="text"
               placeholder="Description of service or product..."
               value={item.title}
@@ -47,7 +42,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <input
-              className="text-gray-600 px-4 border rounded-sm p-1 w-full duration-300 hover:border-gray-400  focus:outline-[#009e74] invalid:outline-red-400"
+              className="text-gray-600 px-4 border rounded-md p-1 w-full   focus:border-green-400  focus:ring-green-300  focus:outline-none hover:border-gray-400 "
               placeholder="Quantity"
               min="1"
               type="number"
@@ -63,7 +58,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           <td>
             <span className="absolute mt-2 ml-4 font-mono text-sm text-gray-600">Rp</span>
             <input
-              className="text-gray-600 pl-12 border duration-300 rounded-sm p-1 w-full hover:border-gray-400  focus:outline-[#009e74]"
+              className="text-gray-600 pl-12 border rounded-md p-1 w-full hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none "
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];
@@ -76,8 +71,8 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <div className="flex justify-between items-center">
-              <span className="text-gray-600 text-sm">{toCurrency(item.qty * item.rate, 'IDR')}</span>
-              {items.length === 1 ? '' : <HiOutlineX className="cursor-pointer hover:text-red-500 duration-300 " onClick={() => handleDelete(item.id)} />}
+              <span className="text-gray-600 text-sm">{toCurrency(item.qty * item.rate, "IDR")}</span>
+              {items.length === 1 ? "" : <HiOutlineX className="cursor-pointer hover:text-red-500 duration-300 text-white" onClick={() => handleDelete(item.id)} />}
             </div>
           </td>
         </tr>

@@ -1,7 +1,7 @@
-import Inputs from './Inputs';
-import { HiPlus } from 'react-icons/hi';
+import Inputs from "./Inputs";
+import { HiPlus } from "react-icons/hi";
 
-const Content = ({ items, handleAdd, handleDelete, handleOnChangeItem, handleOnChangeQty, handleOnChangeRate }) => {
+const Content = ({ items, handleAdd, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete, toCurrency }) => {
   return (
     <>
       <table className="w-full table-fixed">
@@ -15,10 +15,10 @@ const Content = ({ items, handleAdd, handleDelete, handleOnChangeItem, handleOnC
         </thead>
 
         <tbody>
-          <Inputs items={items} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate} handleOnChangeItem={handleOnChangeItem} handleDelete={handleDelete} />
+          <Inputs items={items} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate} handleOnChangeItem={handleOnChangeItem} handleDelete={handleDelete} toCurrency={toCurrency} />
         </tbody>
       </table>
-      <button onClick={() => handleAdd()} className="flex items-center bg-[#009e74] p-1 rounded space-x-2 text-white mt-1 shadow-md hover:bg-[#009e90] border-[#10806f] border">
+      <button onClick={() => handleAdd()} className="flex items-center bg-[#009e90] p-1 rounded space-x-2 text-white mt-1 shadow-md hover:bg-[#009e74] border-[#10806f] border">
         <HiPlus className="mr-1 text-white" />
         Line Item
       </button>
