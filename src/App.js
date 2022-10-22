@@ -1,9 +1,8 @@
 import './App.css';
 import Content from './components/content/Content';
-import {useState} from 'react'
+import { useState } from 'react';
 
 function App() {
-
   const [items, setItems] = useState([]);
 
   // ---- Start Function to handle some new items ---- //
@@ -46,7 +45,7 @@ function App() {
 
   return (
     <div className="mt-20 w-full p-5">
-      <Content items={items} setItems={setItems} handleAdd={handleAdd} handleDelete={handleDelete} handleOnChangeItem={handleOnChangeItem} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate}/>
+      <Content items={items} setItems={setItems} handleAdd={handleAdd} handleDelete={handleDelete} handleOnChangeItem={handleOnChangeItem} handleOnChangeQty={handleOnChangeQty} handleOnChangeRate={handleOnChangeRate} />
     </div>
   );
 }
