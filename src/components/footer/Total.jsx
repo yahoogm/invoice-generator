@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import { IoMdClose } from "react-icons/io";
-import { HiPlus } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io"
+import { HiPlus } from "react-icons/hi"
 
-const Total = ({ inputtext, inputplace, value, onChange, style, button }) => {
-  const [show, Hide] = useState(true);
+const Total = ({ inputtext, inputplace, value, onChange, style }) => {
+  const [show, Hide] = useState(true)
   return (
     <>
       <div className="flex justify-between space-x-4 w-full">
@@ -38,7 +38,7 @@ const Total = ({ inputtext, inputplace, value, onChange, style, button }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Total;
+export default Total

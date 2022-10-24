@@ -58,7 +58,9 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           <td>
             <span className="absolute mt-2 ml-4 font-mono text-sm text-gray-600">Rp</span>
             <input
+
               className="text-gray-600 pl-12 border rounded-md p-1 w-full hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none print:border-hidden "
+
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];
