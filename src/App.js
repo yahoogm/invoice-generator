@@ -1,13 +1,12 @@
-import Content from "../src/components/content/Content"
-import Footer from "../src/components/footer/Footer"
-import Header from "../src/components/header/header"
-import Bisa from "../src/components/header/Bisa"
-import Susah from "../src/components/header/Susah"
-import Time from "../src/components/header/Time"
-import React, { useRef, useState } from "react"
-import { InvoiceProvider } from "./hooks/context"
-import ReactToPrint from "react-to-print"
-
+import Content from "../src/components/content/Content";
+import Footer from "../src/components/footer/Footer";
+import Header from "../src/components/header/header";
+import Bisa from "../src/components/header/Bisa";
+import Susah from "../src/components/header/Susah";
+import Time from "../src/components/header/Time";
+import React, { useRef, useState } from "react";
+import { InvoiceProvider } from "./hooks/context";
+import ReactToPrint from "react-to-print";
 
 const App = () => {
   const [items, setItems] = useState([
@@ -17,63 +16,63 @@ const App = () => {
       qty: 1,
       rate: 0,
     },
-  ])
-  const [notes, setNotes] = useState("")
-  const [terms, setTerms] = useState("")
+  ]);
+  const [notes, setNotes] = useState("");
+  const [terms, setTerms] = useState("");
 
   // ---- Start Function to handle some new items ---- //
   const handleAdd = () => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1
-    setItems([...items, { id: id, item: "", qty: 1, rate: 0 }])
-  }
+    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    setItems([...items, { id: id, item: "", qty: 1, rate: 0 }]);
+  };
 
   // ---- End Function to handle some new items ---- //
 
   // ---- Start Function to handle changes some  item ---- //
   const handleOnChangeItem = (index, item) => {
-    const newItem = [...items]
-    newItem[index].item = item
-    setItems(newItem)
-  }
+    const newItem = [...items];
+    newItem[index].item = item;
+    setItems(newItem);
+  };
   // ---- End Function to handle hanges some item ---- //
 
   // ---- Start Function to handle changes some  rate ---- //
   const handleOnChangeRate = (index, rate) => {
-    const newRate = [...items]
-    newRate[index].rate = rate
-    setItems(newRate)
-  }
+    const newRate = [...items];
+    newRate[index].rate = rate;
+    setItems(newRate);
+  };
   // ---- End Function to handle hanges some rate ---- //
 
   // ---- Start Function to handle delete some  item ---- //
   const handleDelete = (id) => {
-    const delItem = items.filter((item) => item.id !== id)
-    setItems(delItem)
-  }
+    const delItem = items.filter((item) => item.id !== id);
+    setItems(delItem);
+  };
   // ---- End Function to handle delete some  item ---- //
 
   // ---- Start Function to handle changes some  qty ---- //
   const handleOnChangeQty = (index, qty) => {
-    const newQty = [...items]
-    newQty[index].qty = qty
-    setItems(newQty)
-  }
+    const newQty = [...items];
+    newQty[index].qty = qty;
+    setItems(newQty);
+  };
   // ---- End Function to handle hanges some items ---- //
 
-  let subtotal = 0
+  let subtotal = 0;
   items.forEach((item) => {
-    subtotal += Number(item.qty) * Number(item.rate)
-  }, 0)
+    subtotal += Number(item.qty) * Number(item.rate);
+  }, 0);
 
   // ---- Start Function to format the amount to IDR ---- //
 
-  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number)
+  const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number);
   // ---- End Function to format the amount to IDR ---- //
 
-  const componentRef = useRef()
+  const componentRef = useRef();
 
   return (
-    <div ref={componentRef} className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative space-y-5 print:shadow-none">
+    <div ref={componentRef} className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative space-y-5 print:shadow-none print:border-none">
       <ReactToPrint trigger={() => <button className="print:hidden bg-[#009e90] p-4 right-0 absolute rounded-bl-3xl  hover:bg-[#009e74] border-[#10806f] border text-white shadow-md">Print</button>} content={() => componentRef.current} />
 
       <div className=" space-y-5 p-4">
@@ -95,9 +94,7 @@ const App = () => {
           </div>
         </InvoiceProvider>
       </div>
-
     </div>
-  )
-}
-export default App
-
+  );
+};
+export default App;
