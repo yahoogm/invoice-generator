@@ -1,4 +1,4 @@
-const Sidebar = ({ title, place, pesan, setPesan }) => {
+const Sidebar = ({ title, place, value, onChange }) => {
   return (
     <>
       <div>

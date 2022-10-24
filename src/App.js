@@ -18,6 +18,8 @@ const App = () => {
     },
   ])
   const [btn, setBtn] = useState(true)
+  const [notes, setNotes] = useState("")
+  const [terms, setTerms] = useState("")
 
   // ---- Start Function to handle some new items ---- //
   const handleAdd = () => {
@@ -66,6 +68,7 @@ const App = () => {
   const [pesan, setPesan] = useState("")
 
   // ---- Start Function to format the amount to IDR ---- //
+
   const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number)
   // ---- End Function to format the amount to IDR ---- //
 
@@ -89,7 +92,7 @@ const App = () => {
             <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} toCurrency={toCurrency} />
           </div>
           <div>
-            <Footer subtotal={subtotal} toCurrency={toCurrency} />
+            <Footer subtotal={subtotal} notes={notes} setNotes={setNotes} terms={terms} setTerms={setTerms} />
           </div>
         </InvoiceProvider>
       </div>
@@ -97,53 +100,31 @@ const App = () => {
         Show Invoice
       </button>
       {btn && (
-        <div ref={componentRef} className="p-2 space-y-5">
-          <div>
-            <table className="w-full table-fixed">
-              <thead className="bg-gray-800 text-white text-left">
-                <tr>
-                  <th className="p-1 w-[35%]">Item</th>
-                  <th className="p-1 w-[15%]">Quantity</th>
-                  <th className="p-1 w-[25%]">Rate</th>
-                  <th className="p-1 w-[25%]">Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((i) => {
-                  return (
-                    <tr key={i.id}>
-                      <td className="font-semibold">{i.item}</td>
-                      <td>{i.qty}</td>
-                      <td>{toCurrency(i.rate, "IDR")}</td>
-                      <td>{toCurrency(i.qty * i.rate, "IDR")}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          {/* <div className="flex justify-between space-y-5">
-            <div>
-              <h3>{}</h3>
-              <p>tes sdksnkdnknnsdnksn</p>
-              <h3>Terms</h3>
-              <p>tes sdksnkdnknnsdnksn</p>
-            </div>
-
-            <div className="flex justify-between space-x-5">
-              <div>
-                <h3>Notes</h3>
-                <h3>Terms</h3>
-                <h3>Notes</h3>
-              </div>
-              <div>
-                <p>tes sdksnkdnknnsdnksn</p>
-                <p>tes sdksnkdnknnsdnksn</p>
-                <p>tes sdksnkdnknnsdnksn</p>
-              </div>
-            </div>
-          </div> */}
+        <div ref={componentRef} className="p-2">
+          <table className="w-full table-fixed">
+            <thead className="bg-gray-800 text-white text-left">
+              <tr>
+                <th className="p-1 w-[35%]">Item</th>
+                <th className="p-1 w-[15%]">Quantity</th>
+                <th className="p-1 w-[25%]">Rate</th>
+                <th className="p-1 w-[25%]">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((i) => {
+                return (
+                  <tr key={i.id}>
+                    <td className="font-semibold">{i.item}</td>
+                    <td>{i.qty}</td>
+                    <td>{toCurrency(i.rate, "IDR")}</td>
+                    <td>{toCurrency(i.qty * i.rate, "IDR")}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+          <p>{notes}</p>
+          <p>{terms}</p>
         </div>
       )}
     </div>
