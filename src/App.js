@@ -17,8 +17,6 @@ const App = () => {
       rate: 0,
     },
   ]);
-  const [notes, setNotes] = useState("");
-  const [terms, setTerms] = useState("");
 
   // ---- Start Function to handle some new items ---- //
   const handleAdd = () => {
@@ -90,7 +88,7 @@ const App = () => {
             <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} toCurrency={toCurrency} />
           </div>
           <div>
-            <Footer subtotal={subtotal} notes={notes} setNotes={setNotes} terms={terms} setTerms={setTerms} toCurrency={toCurrency} />
+            <Footer subtotal={subtotal} toCurrency={toCurrency} />
           </div>
         </InvoiceProvider>
       </div>
