@@ -17,7 +17,6 @@ const App = () => {
       rate: 0,
     },
   ])
-  const [btn, setBtn] = useState(true)
   const [notes, setNotes] = useState("")
   const [terms, setTerms] = useState("")
 
@@ -65,8 +64,6 @@ const App = () => {
     subtotal += Number(item.qty) * Number(item.rate)
   }, 0)
 
-  const [pesan, setPesan] = useState("")
-
   // ---- Start Function to format the amount to IDR ---- //
 
   const toCurrency = (number, currency, lang = undefined) => Intl.NumberFormat(lang, { style: "currency", currency }).format(number)
@@ -75,8 +72,8 @@ const App = () => {
   const componentRef = useRef()
 
   return (
-    <div className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative space-y-5">
-      <ReactToPrint trigger={() => <button className="bg-[#009e90] p-4 right-0 absolute rounded-bl-3xl  hover:bg-[#009e74] border-[#10806f] border text-white shadow-md">Print</button>} content={() => componentRef.current} />
+    <div ref={componentRef} className="w-[900px] m-auto border-l border-t border-b border-r-2 shadow-lg relative space-y-5">
+      <ReactToPrint trigger={() => <button className="bg-[#009e90] p-4 right-0 absolute rounded-bl-3xl  hover:bg-[#009e74] border-[#10806f] border text-white shadow-md print:hidden">Print</button>} content={() => componentRef.current} />
       <div className=" space-y-5 p-4">
         <InvoiceProvider>
           <div className="flex flex-row justify-between">
