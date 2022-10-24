@@ -65,7 +65,11 @@ const App = () => {
     subtotal += Number(item.qty) * Number(item.rate)
   }, 0)
 
-  const [pesan, setPesan] = useState("")
+  const [discount, setDiscount] = useState(0)
+  const [payment, setPayment] = useState(0)
+  const [tax, setTax] = useState(0)
+  const [paid, setPaid] = useState(0)
+  let total = subtotal + Number(payment) - Number(discount) + Number(tax)
 
   // ---- Start Function to format the amount to IDR ---- //
 
@@ -92,7 +96,22 @@ const App = () => {
             <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} toCurrency={toCurrency} />
           </div>
           <div>
-            <Footer subtotal={subtotal} notes={notes} setNotes={setNotes} terms={terms} setTerms={setTerms} />
+            <Footer
+              paid={paid}
+              setPaid={setPaid}
+              tax={tax}
+              setTax={setTax}
+              payment={payment}
+              setPayment={setPayment}
+              discount={discount}
+              setDiscount={setDiscount}
+              subtotal={subtotal}
+              notes={notes}
+              setNotes={setNotes}
+              terms={terms}
+              setTerms={setTerms}
+              toCurrency={toCurrency}
+            />
           </div>
         </InvoiceProvider>
       </div>
@@ -123,8 +142,40 @@ const App = () => {
               })}
             </tbody>
           </table>
-          <p>{notes}</p>
-          <p>{terms}</p>
+          <div className="flex justify-between mt-10 ml-10">
+            <div className="space-y-2">
+              <div>
+                <h5 className="text-gray-500 font-semibold">Notes :</h5>
+                <p>{notes}</p>
+              </div>
+              <div>
+                <h5 className="text-gray-500 font-semibold">Terms :</h5>
+                <p>{terms}</p>
+              </div>
+            </div>
+
+            <div className="flex justify-between space-x-10  mr-10">
+              <div className="space-y-2 text-gray-500">
+                <p>Subtotal</p>
+                <p>DisCount</p>
+                <p>Tax</p>
+                <p>Shipping</p>
+                <p>Total</p>
+                <p>Amount Paid</p>
+                <p>Balance Due</p>
+              </div>
+
+              <div className="space-y-2">
+                <p>{toCurrency(subtotal, "IDR")}</p>
+                <p>{toCurrency(discount, "IDR")}</p>
+                <p>{toCurrency(tax, "IDR")}</p>
+                <p>{toCurrency(payment, "IDR")}</p>
+                <p>{toCurrency(total, "IDR")}</p>
+                <p>{toCurrency(paid, "IDR")}</p>
+                <p>{toCurrency(Number(paid) - total, "IDR")}</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
