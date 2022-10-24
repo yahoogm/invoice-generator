@@ -28,7 +28,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
         <tr key={item.id}>
           <td>
             <input
-              className="text-gray-600 w-full  border rounded-md p-1 hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none  px-3 placeholder:text-gray-400"
+              className="text-gray-600 w-full  border rounded-md p-1 hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none  px-3 placeholder:text-gray-400 print:border-hidden"
               type="text"
               placeholder="Description of service or product..."
               value={item.title}
@@ -42,7 +42,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           </td>
           <td>
             <input
-              className="text-gray-600 px-4 border rounded-md p-1 w-full   focus:border-green-400  focus:ring-green-300  focus:outline-none hover:border-gray-400 "
+              className="text-gray-600 px-4 border rounded-md p-1 w-full   focus:border-green-400  focus:ring-green-300  focus:outline-none hover:border-gray-400 print:border-hidden"
               placeholder="Quantity"
               min="1"
               type="number"
@@ -58,7 +58,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           <td>
             <span className="absolute mt-2 ml-4 font-mono text-sm text-gray-600">Rp</span>
             <input
-              className="text-gray-600 pl-12 border rounded-md p-1 w-full hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none "
+              className="text-gray-600 pl-12 border rounded-md p-1 w-full hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none print:border-hidden "
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];

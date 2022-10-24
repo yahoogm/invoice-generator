@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ant-upload-list-item-name {
+    display: none;
+}
