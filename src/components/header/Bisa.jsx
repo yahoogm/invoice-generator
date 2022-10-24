@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { Input } from 'antd';
+import React, { useState } from "react"
+import { Input } from "antd"
 
-
-
-const { TextArea } = Input;
+const { TextArea } = Input
 const Bisa = () => {
-    const [value, setValue] = useState('');
+  const [value, setValue] = useState("")
   return (
     <>
-    <TextArea
+      <TextArea
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Who is this invoice from? (required)"
@@ -16,10 +14,10 @@ const Bisa = () => {
           minRows: 3,
           maxRows: 5,
         }}
-        className="border border-gray-600 print:border-hidden"
-        style={{marginTop:"30px", width:"300px",outline: "none"}}
+        className="p-2 border border-gray-400 print:border-hidden"
+        style={{ marginTop: "30px", width: "280px", outline: "none" }}
       />
-      </>
+    </>
   )
 }
 
