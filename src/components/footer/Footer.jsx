@@ -2,7 +2,7 @@ import { useState } from "react"
 import Sidebar from "../footer/Sidebar"
 import Total from "../footer/Total"
 
-const Footer = ({ subtotal }) => {
+const Footer = ({ subtotal, toCurrency, pesan, setPesan }) => {
   const [discount, setDiscount] = useState(0)
   const [payment, setPayment] = useState(0)
   const [tax, setTax] = useState(0)
@@ -12,9 +12,9 @@ const Footer = ({ subtotal }) => {
 
   return (
     <>
-      <div className="flex justify-between ">
+      <div className="flex  justify-between ">
         <div className="mt-2 mb-2 w-full ">
-          <Sidebar title={"Notes"} place={"Notes - any relevant information not already covered"} />
+          <Sidebar pesan={pesan} setPesan={setPesan} title={"Notes"} place={"Notes - any relevant information not already covered"} />
           <br />
           <br />
           <Sidebar title={"Terms"} place={"Term and Conditions - late fees,payment methods,delivery schedule"} />
@@ -22,15 +22,15 @@ const Footer = ({ subtotal }) => {
         </div>
 
         <div className="mt-2 mb-2 w-full">
-          <Total inputtext={"Subtotal"} value={subtotal} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
+          <Total toCurrency={toCurrency} inputtext={"Subtotal"} value={toCurrency(subtotal, "IDR")} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
           <Total inputtext={"Discount"} onChange={(e) => setDiscount(e.target.value)} value={discount} />
           <Total inputtext={"Tax"} onChange={(e) => setTax(e.target.value)} value={tax} />
-          <Total inputtext={"shipping"} onChange={(e) => setPayment(e.target.value)} value={payment} />
+          <Total inputtext={"Shipping"} onChange={(e) => setPayment(e.target.value)} value={payment} />
 
-          <Total inputtext={"Total"} value={total} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
+          <Total inputtext={"Total"} value={toCurrency(total, "IDR")} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
 
           <Total inputtext={"Amount Paid"} onChange={(e) => setPaid(e.target.value)} value={paid} />
-          <Total inputtext={"Balance Due"} value={Number(paid) - total} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
+          <Total inputtext={"Balance Due"} value={toCurrency(Number(paid) - total, "IDR")} style={{ borderWidth: 0, boxShadow: "none", textAlign: "right" }} />
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from "react"
 
 const Leaderbar = ({ judul, title }) => {
-  const [kosong, setKosong] = useState(false);
+  const [kosong, setKosong] = useState(false)
   return (
     <>
       <div className="w-full">
@@ -17,16 +17,16 @@ const Leaderbar = ({ judul, title }) => {
             placeholder={title}
             onChange={(e) => {
               if (e.target.value.length === 0) {
-                setKosong(true);
+                setKosong(true)
               } else {
-                setKosong(false);
+                setKosong(false)
               }
             }}
           />
         </label>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Leaderbar;
+export default Leaderbar
