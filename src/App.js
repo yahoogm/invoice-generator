@@ -65,11 +65,7 @@ const App = () => {
     subtotal += Number(item.qty) * Number(item.rate)
   }, 0)
 
-  const [discount, setDiscount] = useState(0)
-  const [payment, setPayment] = useState(0)
-  const [tax, setTax] = useState(0)
-  const [paid, setPaid] = useState(0)
-  let total = subtotal + Number(payment) - Number(discount) + Number(tax)
+  const [pesan, setPesan] = useState("")
 
   // ---- Start Function to format the amount to IDR ---- //
 
@@ -96,88 +92,10 @@ const App = () => {
             <Content items={items} handleDelete={handleDelete} handleAdd={handleAdd} handleOnChangeItem={handleOnChangeItem} handleOnChangeRate={handleOnChangeRate} handleOnChangeQty={handleOnChangeQty} toCurrency={toCurrency} />
           </div>
           <div>
-            <Footer
-              paid={paid}
-              setPaid={setPaid}
-              tax={tax}
-              setTax={setTax}
-              payment={payment}
-              setPayment={setPayment}
-              discount={discount}
-              setDiscount={setDiscount}
-              subtotal={subtotal}
-              notes={notes}
-              setNotes={setNotes}
-              terms={terms}
-              setTerms={setTerms}
-              toCurrency={toCurrency}
-            />
+            <Footer subtotal={subtotal} notes={notes} setNotes={setNotes} terms={terms} setTerms={setTerms} toCurrency={toCurrency} />
           </div>
         </InvoiceProvider>
       </div>
-      <button className="bg-[#009e90] p-4 w-full  hover:bg-[#009e74] border-[#10806f] border text-white shadow-lg" onClick={() => setBtn(!btn)}>
-        Show Invoice
-      </button>
-      {btn && (
-        <div ref={componentRef} className="p-2">
-          <table className="w-full table-fixed">
-            <thead className="bg-gray-800 text-white text-left">
-              <tr>
-                <th className="p-1 w-[35%]">Item</th>
-                <th className="p-1 w-[15%]">Quantity</th>
-                <th className="p-1 w-[25%]">Rate</th>
-                <th className="p-1 w-[25%]">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.map((i) => {
-                return (
-                  <tr key={i.id}>
-                    <td className="font-semibold">{i.item}</td>
-                    <td>{i.qty}</td>
-                    <td>{toCurrency(i.rate, "IDR")}</td>
-                    <td>{toCurrency(i.qty * i.rate, "IDR")}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-          <div className="flex justify-between mt-10 ml-10">
-            <div className="space-y-2">
-              <div>
-                <h5 className="text-gray-500 font-semibold">Notes :</h5>
-                <p>{notes}</p>
-              </div>
-              <div>
-                <h5 className="text-gray-500 font-semibold">Terms :</h5>
-                <p>{terms}</p>
-              </div>
-            </div>
-
-            <div className="flex justify-between space-x-10  mr-10">
-              <div className="space-y-2 text-gray-500">
-                <p>Subtotal</p>
-                <p>DisCount</p>
-                <p>Tax</p>
-                <p>Shipping</p>
-                <p>Total</p>
-                <p>Amount Paid</p>
-                <p>Balance Due</p>
-              </div>
-
-              <div className="space-y-2">
-                <p>{toCurrency(subtotal, "IDR")}</p>
-                <p>{toCurrency(discount, "IDR")}</p>
-                <p>{toCurrency(tax, "IDR")}</p>
-                <p>{toCurrency(payment, "IDR")}</p>
-                <p>{toCurrency(total, "IDR")}</p>
-                <p>{toCurrency(paid, "IDR")}</p>
-                <p>{toCurrency(Number(paid) - total, "IDR")}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
