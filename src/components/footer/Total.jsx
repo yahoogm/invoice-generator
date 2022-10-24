@@ -23,7 +23,7 @@ const Total = ({ inputtext, inputplace, value, onChange, style }) => {
               <input
                 style={style}
                 type="text"
-                className="mt-1 px-1  py-1  w-30  text-gray-600 w-full  border rounded-md p-1 hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none   placeholder:text-gray-400 "
+                className="mt-1 px-1  py-1  w-30  text-gray-600 w-full  border rounded-md p-1 hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none   placeholder:text-gray-400 print:border-hidden"
                 placeholder={inputplace}
                 onChange={onChange}
                 value={value}

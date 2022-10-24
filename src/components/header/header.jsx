@@ -16,9 +16,7 @@ const Header = () => {
   return (
     <>
       <Upload
-        name="avatar"
         listType="picture-card"
-        className="avatar-uploader"
         onChange={handleChange}
         fileList={fileList}
         beforeUpload={() => {
