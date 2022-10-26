@@ -3,7 +3,7 @@ import { useInvoice } from "../../hooks/context";
 import Sidebar from "../footer/Sidebar";
 import Total from "../footer/Total";
 
-const Footer = ({ notes, terms, setNotes, setTerms }) => {
+const Footer = ({ notes, terms, setNotes, setTerms, toCurrency }) => {
   const { items } = useInvoice();
   const [discount, setDiscount] = useState(0);
   const [payment, setPayment] = useState(0);
