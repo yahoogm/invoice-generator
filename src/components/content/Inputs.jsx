@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineX } from "react-icons/hi";
+import { useInvoice } from "../../hooks/context";
 
 // ------ {items, handleOnChangeQty .... is a props from Content.jsx (parent)} ------- //
-const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeItem, handleDelete, toCurrency }) => {
+const Inputs = ({ toCurrency }) => {
+  const { items, setItems } = useInvoice();
   // --------- Start State to change something in items --------- //
   const [qty, setQty] = useState([1]);
   const [rate, setRate] = useState([1]);
@@ -12,16 +14,47 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
   // --------- Start Effect to render something new changes of items --------- //
   useEffect(() => {
     items.map((item, index) => setQty([...title, item.title]));
-  }, [items]);
+  }, []);
 
   useEffect(() => {
     items.map((item, index) => setQty([...qty, item.qty]));
-  }, [items]);
+  }, []);
 
   useEffect(() => {
     items.map((item, index) => setRate([...rate, item.rate]));
-  }, [items]);
+  }, []);
   // --------- End Effect to render something new changes of items --------- //
+
+  // ---- Start Function to handle changes some  item ---- //
+  const handleOnChangeItem = (index, item) => {
+    const newItem = [...items];
+    newItem[index].item = item;
+    setItems(newItem);
+  };
+  // ---- End Function to handle hanges some item ---- //
+
+  // ---- Start Function to handle changes some  rate ---- //
+  const handleOnChangeRate = (index, rate) => {
+    const newRate = [...items];
+    newRate[index].rate = rate;
+    setItems(newRate);
+  };
+  // ---- End Function to handle hanges some rate ---- //
+
+  // ---- Start Function to handle delete some  item ---- //
+  const handleDelete = (id) => {
+    const delItem = items.filter((item) => item.id !== id);
+    setItems(delItem);
+  };
+  // ---- End Function to handle delete some  item ---- //
+
+  // ---- Start Function to handle changes some  qty ---- //
+  const handleOnChangeQty = (index, qty) => {
+    const newQty = [...items];
+    newQty[index].qty = qty;
+    setItems(newQty);
+  };
+  // ---- End Function to handle hanges some items ---- //
   return (
     <>
       {items.map((item, index) => (
@@ -58,9 +91,7 @@ const Inputs = ({ items, handleOnChangeQty, handleOnChangeRate, handleOnChangeIt
           <td>
             <span className="absolute mt-2 ml-4 font-mono text-sm text-gray-600">Rp</span>
             <input
-
               className="text-gray-600 pl-12 border rounded-md p-1 w-full hover:border-gray-400  focus:border-green-400  focus:ring-green-300  focus:outline-none print:border-hidden "
-
               value={item.rate}
               onChange={(e) => {
                 let rates = [...rate];

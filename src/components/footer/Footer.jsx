@@ -1,14 +1,21 @@
-import { useState } from "react"
-import Sidebar from "../footer/Sidebar"
-import Total from "../footer/Total"
+import { useState } from "react";
+import { useInvoice } from "../../hooks/context";
+import Sidebar from "../footer/Sidebar";
+import Total from "../footer/Total";
 
-const Footer = ({ subtotal, notes, terms, setNotes, setTerms }) => {
-  const [discount, setDiscount] = useState(0)
-  const [payment, setPayment] = useState(0)
-  const [tax, setTax] = useState(0)
-  const [paid, setPaid] = useState(0)
+const Footer = ({ notes, terms, setNotes, setTerms }) => {
+  const { items } = useInvoice();
+  const [discount, setDiscount] = useState(0);
+  const [payment, setPayment] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [paid, setPaid] = useState(0);
 
-  let total = subtotal + Number(payment) - Number(discount) + Number(tax)
+  let subtotal = 0;
+  items.forEach((item) => {
+    subtotal += Number(item.qty) * Number(item.rate);
+  }, 0);
+
+  let total = subtotal + Number(payment) - Number(discount) + Number(tax);
 
   return (
     <>
@@ -32,6 +39,6 @@ const Footer = ({ subtotal, notes, terms, setNotes, setTerms }) => {
         </div>
       </div>
     </>
-  )
-}
-export default Footer
+  );
+};
+export default Footer;
